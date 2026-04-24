@@ -23,29 +23,24 @@ jobs:
           flutter-version: '3.19.0'
           channel: 'stable'
       
-      - name: Install Dependencies
+      - name: Locate and Build
         run: |
-          if [ -f "pubspec.yaml" ]; then
-            flutter pub get
-          elif [ -f "RamadanTafsirApp/pubspec.yaml" ]; then
-            cd RamadanTafsirApp && flutter pub get
-          else
-            echo "Error: pubspec.yaml not found!"
-            exit 1
-          fi
-
-      - name: Build APK
-        run: |
-          if [ -f "pubspec.yaml" ]; then
-            flutter build apk --release --no-tree-shake-icons
-          else
-            cd RamadanTafsirApp && flutter build apk --release --no-tree-shake-icons
-          fi
+          # Nemo inda pubspec.yaml yake
+          PUBSPEC_PATH=$(find . -name "pubspec.yaml" -print -quit)
+          PROJECT_ROOT=$(dirname "$PUBSPEC_PATH")
+          
+          echo "Project found in: $PROJECT_ROOT"
+          cd "$PROJECT_ROOT"
+          
+          flutter pub get
+          flutter build apk --release --no-tree-shake-icons
+          
+          # Matsar da APK zuwa inda GitHub zai gani
+          mkdir -p $GITHUB_WORKSPACE/output
+          cp build/app/outputs/flutter-apk/app-release.apk $GITHUB_WORKSPACE/output/ramadan-tafsir.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: ramadan-tafsir-app-release
-          path: |
-            build/app/outputs/flutter-apk/app-release.apk
-            RamadanTafsirApp/build/app/outputs/flutter-apk/app-release.apk
+          path: output/ramadan-tafsir.apk
