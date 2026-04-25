@@ -26,7 +26,7 @@ jobs:
 
       - name: Initialize Flutter Project
         run: |
-          flutter create . --overwrite --platforms android
+          flutter create .  --platforms android
           
       - name: Install Dependencies
         run: flutter pub get
