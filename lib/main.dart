@@ -1,76 +1,46 @@
-import 'package:flutter/material.dart';
-import 'tafsir_list_screen.dart';
+name: Flutter Build APK
 
-void main() {
-  runApp(const RamadanApp());
-}
+on:
+  push:
+    branches:
+      - main
 
-class RamadanApp extends StatelessWidget {
-  const RamadanApp({super.key});
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Ramadan Tafsir 2026',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-        useMaterial3: true,
-      ),
-      home: const HomeScreen(),
-    );
-  }
-}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/sheikh.jpg'),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Container(color: Colors.black.withOpacity(0.6)),
-          SafeArea(
-            child: Column(
-              children: [
-                const SizedBox(height: 60),
-                const Text("RAMADAN TAFSIR 2026", 
-                  style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
-                const Spacer(),
-                _buildMenuButton(context, "TAFSIRIN RAMADAN", Icons.menu_book, true),
-                const SizedBox(height: 20),
-                _buildMenuButton(context, "MUHADARORI", Icons.mic, false),
-                const SizedBox(height: 60),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.10.0'
 
-  Widget _buildMenuButton(BuildContext context, String text, IconData icon, bool isTafsir) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
-      child: ElevatedButton.icon(
-        style: ElevatedButton.styleFrom(
-          minimumSize: const Size(double.infinity, 60),
-          backgroundColor: Colors.green.shade800,
-        ),
-        onPressed: () => Navigator.push(context, MaterialPageRoute(
-          builder: (context) => TafsirListScreen(isTafsir: isTafsir))),
-        icon: Icon(icon, color: Colors.white),
-        label: Text(text, style: const TextStyle(color: Colors.white, fontSize: 18)),
-      ),
-    );
-  }
-}
+      - name: Re-Initialize Android Folder
+        run: |
+          # Wannan zai goge folder ta android dake da matsala ya sake ta sabuwa
+          rm -rf android
+          flutter create . --platforms android
+
+      - name: Restore My Main Dart
+        run: |
+          # Tunda flutter create zai iya sake taba main.dart, wannan matakin zai tabbatar code dinka ya zauna
+          # Za mu bar matakin gyara na biyu ya yi wannan
+          flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
