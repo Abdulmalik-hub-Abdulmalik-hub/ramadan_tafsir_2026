@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # Na daukaka zuwa v4
 
       - name: Set up Java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4 # Na daukaka zuwa v4
         with:
           distribution: 'zulu'
           java-version: '17'
@@ -26,9 +26,8 @@ jobs:
 
       - name: Initialize Flutter Project
         run: |
-          # Wannan layin zai samar da folder ta android da ios idan babu su
           flutter create . --overwrite --platforms android
-
+          
       - name: Install Dependencies
         run: flutter pub get
 
@@ -36,7 +35,7 @@ jobs:
         run: flutter build apk --release
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4 # WANNAN SHI NE GYARA MAFI MUHIMMANCI
         with:
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
