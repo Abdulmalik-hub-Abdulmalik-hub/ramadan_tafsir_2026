@@ -56,11 +56,22 @@ class AppData {
   });
 
   static List<TafsirModel> muhadaroriList = [
-    TafsirModel(
-      title: "Mafita daga Jarrabawar Rayuwa",
-      subtitle: "M. Sani Abdullahi & Dr Abba Ya'u Gido",
-      audioPath: "audio/lecture1.mp3",
-      imagePath: "assets/images/speakers1.jpg",
-    ),
-  ];
-}
+  TafsirModel(
+    title: "Mafita daga Jarrabawar Rayuwa",
+    subtitle: "M. Sani Abdullahi & Dr Abba Ya'u Gido",
+    audioPath: "audio/lecture1.mp3",
+    imagePath: "assets/images/speakers1.jpg", 
+  ),
+  TafsirModel(
+    title: "Riko da Alkur'ani da Sunna",
+    subtitle: "Mln. Abdullahi Husaini and Sheik Muhammad Sani Abdullahi Aja",
+    audioPath: "audio/lecture2.mp3",
+    imagePath: "assets/images/speakers2.jpg", 
+  ),
+  TafsirModel(
+    title: "Tabarbarewar Tarbiya Ina mafita", // Ka gyara wannan title din
+    subtitle: "M. Shehu Usman Gumel & M. Yakubu Wambai",
+    audioPath: "audio/lecture3.mp3",
+    imagePath: "assets/images/speakers3.jpg", 
+  ),
+];
