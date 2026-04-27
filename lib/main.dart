@@ -30,6 +30,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
+          // Background Image
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -38,13 +39,20 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
           ),
+          // Dark Overlay to make text readable
           Container(color: Colors.black.withOpacity(0.6)),
           SafeArea(
             child: Column(
               children: [
                 const SizedBox(height: 60),
-                const Text("RAMADAN TAFSIR 2026", 
-                  style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
+                const Text(
+                  "RAMADAN TAFSIR 2026", 
+                  style: TextStyle(
+                    color: Colors.white, 
+                    fontSize: 24, 
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
                 const Spacer(),
                 _buildMenuButton(context, "TAFSIRIN RAMADAN", Icons.menu_book, true),
                 const SizedBox(height: 20),
@@ -65,11 +73,21 @@ class HomeScreen extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           minimumSize: const Size(double.infinity, 60),
           backgroundColor: Colors.green.shade800,
+          foregroundColor: Colors.white, // Text and Icon color
         ),
-        onPressed: () => Navigator.push(context, MaterialPageRoute(
-          builder: (context) => TafsirListScreen(isTafsir: isTafsir))),
-        icon: Icon(icon, color: Colors.white),
-        label: Text(text, style: const TextStyle(color: Colors.white, fontSize: 18)),
+        onPressed: () {
+          Navigator.push(
+            context, 
+            MaterialPageRoute(
+              builder: (context) => TafsirListScreen(isTafsir: isTafsir)
+            ),
+          );
+        },
+        icon: Icon(icon),
+        label: Text(
+          text, 
+          style: const TextStyle(fontSize: 18),
+        ),
       ),
     );
   }
