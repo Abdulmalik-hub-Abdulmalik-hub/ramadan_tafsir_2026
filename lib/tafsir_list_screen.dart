@@ -20,8 +20,16 @@ class TafsirListScreen extends StatelessWidget {
             title: Text(item.title),
             subtitle: Text(item.subtitle),
             trailing: const Icon(Icons.play_arrow),
-            onTap: () => Navigator.push(context, MaterialPageRoute(
-              builder: (context) => PlayerScreen(item: item))),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PlayerScreen(
+                  model: item,          // Current item
+                  playlist: list,       // The whole list for Next/Back
+                  currentIndex: index,  // Position in the list
+                ),
+              ),
+            ),
           );
         },
       ),
