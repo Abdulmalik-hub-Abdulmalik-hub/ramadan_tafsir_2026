@@ -8,9 +8,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  audioplayers: 5.2.1
-  font_awesome_flutter: 10.7.0
-  provider: 6.1.1
+  audioplayers: ^5.2.1
+  font_awesome_flutter: ^10.7.0
+  provider: ^6.1.1
+
 
 dev_dependencies:
   flutter_test:
