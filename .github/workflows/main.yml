@@ -23,14 +23,12 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.10.0'
+          channel: 'stable'
 
-      - name: Re-Initialize Android Folder
+      - name: Clean and Get Dependencies
         run: |
-          rm -rf android
-          flutter create . --platforms android
-
-      - name: Install Dependencies
-        run: flutter pub get
+          flutter clean
+          flutter pub get
 
       - name: Build APK
         run: flutter build apk --release
