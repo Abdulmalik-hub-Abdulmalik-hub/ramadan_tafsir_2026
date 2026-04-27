@@ -25,10 +25,13 @@ jobs:
           flutter-version: '3.10.0'
           channel: 'stable'
 
-      - name: Clean and Get Dependencies
+      - name: Repair Android Project
         run: |
-          flutter clean
-          flutter pub get
+          rm -rf android
+          flutter create . --platforms android
+
+      - name: Get Dependencies
+        run: flutter pub get
 
       - name: Build APK
         run: flutter build apk --release
