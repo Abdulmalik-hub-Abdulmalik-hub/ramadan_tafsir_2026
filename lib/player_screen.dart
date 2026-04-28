@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'app_data.dart';
+import 'data/app_data.dart'; 
+
 
 class PlayerScreen extends StatefulWidget {
   final TafsirModel model;
