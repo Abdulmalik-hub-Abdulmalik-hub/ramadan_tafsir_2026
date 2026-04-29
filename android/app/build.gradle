@@ -1,21 +1,24 @@
-def gms_version = "4.3.15"
-
 apply plugin: 'com.android.application'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+    // Manually setting the compile version to match modern standards
     compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.abdulmalik.ramadan_tafsir"
+        
+        // This is the direct fix for the connectivity_plus error
         minSdkVersion 19
         targetSdkVersion 33
+        
         versionCode 1
         versionName "1.0"
     }
 
     buildTypes {
         release {
+            // Using debug signing for a faster build process in GitHub Actions
             signingConfig signingConfigs.debug
         }
     }
