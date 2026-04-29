@@ -1,18 +1,22 @@
 class TafsirModel {
   final String title;
   final String subtitle;
-  final String audioPath;
+  final String audioUrl;
+  final String fileName;
   final String imagePath;
 
   TafsirModel({
     required this.title,
     required this.subtitle,
-    required this.audioPath,
+    required this.audioUrl,
+    required this.fileName,
     required this.imagePath,
   });
 }
 
 class AppData {
+  static const String baseUrl = "https://abdulmalik-hub.github.io/Ramadan-audio/audio/";
+
   static final List<Map<String, String>> surahInfo = [
     {"sura": "Suratul Fathi", "aya": "4-6"},
     {"sura": "Suratul Fathi", "aya": "7-10"},
@@ -50,8 +54,9 @@ class AppData {
     return TafsirModel(
       title: surahInfo[index]["sura"]!,
       subtitle: "Rana ta $day (Aya: ${surahInfo[index]["aya"]})",
-      audioPath: "audio/day$day.mp3",
-      imagePath: "assets/images/students$imgIndex.jpg",
+      audioUrl: "${baseUrl}day$day.mp3",
+      fileName: "day$day.mp3",
+      imagePath: "assets/Image/students$imgIndex.jpg",
     );
   });
 
@@ -59,20 +64,23 @@ class AppData {
     TafsirModel(
       title: "Mafita daga Jarrabawar Rayuwa",
       subtitle: "M. Sani Abdullahi & Dr Abba Ya'u Gido",
-      audioPath: "audio/lecture1.mp3",
-      imagePath: "assets/images/speakers1.jpg",
+      audioUrl: "${baseUrl}lecture1.mp3",
+      fileName: "lecture1.mp3",
+      imagePath: "assets/Image/speakers1.jpg",
     ),
     TafsirModel(
       title: "Riko da Alkur'ani da Sunna",
       subtitle: "Mln. Abdullahi Husaini and Sheik Muhammad Sani Abdullahi Aja",
-      audioPath: "audio/lecture2.mp3",
-      imagePath: "assets/images/speakers2.jpg",
+      audioUrl: "${baseUrl}lecture2.mp3",
+      fileName: "lecture2.mp3",
+      imagePath: "assets/Image/speakers2.jpg",
     ),
     TafsirModel(
       title: "Tabarbarewar Tarbiya Ina mafita",
       subtitle: "M. Shehu Usman Gumel & M. Yakubu Wambai",
-      audioPath: "audio/lecture3.mp3",
-      imagePath: "assets/images/speakers3.jpg",
+      audioUrl: "${baseUrl}lecture3.mp3",
+      fileName: "lecture3.mp3",
+      imagePath: "assets/Image/speakers3.jpg",
     ),
   ];
 }
