@@ -1,5 +1,5 @@
 name: ramadan_tafsir_2026
-description: Offline Tafsir App.
+description: Streaming and Offline Tafsir App.
 version: 1.0.0+1
 
 environment:
@@ -11,15 +11,16 @@ dependencies:
   audioplayers: ^5.2.1
   font_awesome_flutter: ^10.7.0
   provider: ^6.1.1
-
+  dio: ^5.4.1
+  path_provider: ^2.1.2
+  connectivity_plus: ^5.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: 3.0.0
+  flutter_lints: ^3.0.0
 
 flutter:
   uses-material-design: true
   assets:
     - assets/Image/
-    - assets/audio/
