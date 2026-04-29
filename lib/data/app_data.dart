@@ -16,7 +16,7 @@ class TafsirModel {
 
 class AppData {
   // Cikakken Link din GitHub Pages dinka
-  static const String baseUrl = "https://abdulmalik-hub-abdulmalik-hub.github.io/Ramadan-audio-/audio/";
+  static const String baseUrl = "https://abdulmalik-hub-abdulmalik-hub.github.io/Ramadan-audio-/";
 
   static final List<Map<String, String>> surahInfo = [
     {"sura": "Suratul Fathi", "aya": "4-6"},
