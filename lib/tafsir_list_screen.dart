@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'data/app_data.dart';
-import 'screens/player_screen.dart';
+import 'player_screen.dart';
+
 
 class TafsirListScreen extends StatelessWidget {
   final bool isTafsir;
