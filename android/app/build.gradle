@@ -9,7 +9,7 @@ android {
         applicationId "com.abdulmalik.ramadan_tafsir"
         
         // This is the direct fix for the connectivity_plus error
-        minSdkVersion 19
+        minSdkVersion 16
         targetSdkVersion 33
         
         versionCode 1
