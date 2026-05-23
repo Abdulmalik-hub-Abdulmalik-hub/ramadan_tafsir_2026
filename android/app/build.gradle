@@ -1,25 +1,30 @@
-apply plugin: 'com.android.application'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
 
 android {
-    // Manually setting the compile version to match modern standards
-    compileSdkVersion 33
+    namespace = "com.abdulmalik.ramadan_tafsir"
+    compileSdk = 34
 
     defaultConfig {
-        applicationId "com.abdulmalik.ramadan_tafsir"
-        
-        // This is the direct fix for the connectivity_plus error
-        minSdkVersion 19
-        targetSdkVersion 33
-        
-        versionCode 1
-        versionName "1.0"
+        applicationId = "com.abdulmalik.ramadan_tafsir"
+        minSdk = 21
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0.0"
     }
 
     buildTypes {
         release {
-            // Using debug signing for a faster build process in GitHub Actions
-            signingConfig signingConfigs.debug
+            minifyEnabled = true
+            shrinkResources = true
+            signingConfig = signingConfigs.debug
         }
     }
+}
+
+flutter {
+    source = "../.."
 }

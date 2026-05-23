@@ -57,7 +57,7 @@ class AppData {
       subtitle: "Rana ta $day (Aya: ${surahInfo[index]["aya"]})",
       audioUrl: "${baseUrl}day$day.mp3",
       fileName: "day$day.mp3",
-      imagePath: "assets/Image/students$imgIndex.jpg",
+      imagePath: "assets/image/students$imgIndex.jpg",
     );
   });
 
@@ -67,21 +67,21 @@ class AppData {
       subtitle: "M. Sani Abdullahi & Dr Abba Ya'u Gido",
       audioUrl: "${baseUrl}lecture1.mp3",
       fileName: "lecture1.mp3",
-      imagePath: "assets/Image/speakers1.jpg",
+      imagePath: "assets/image/speakers1.jpg",
     ),
     TafsirModel(
       title: "Riko da Alkur'ani da Sunna",
       subtitle: "Mln. Abdullahi Husaini and Sheik Muhammad Sani Abdullahi Aja",
       audioUrl: "${baseUrl}lecture2.mp3",
       fileName: "lecture2.mp3",
-      imagePath: "assets/Image/speakers2.jpg",
+      imagePath: "assets/image/speakers2.jpg",
     ),
     TafsirModel(
       title: "Tabarbarewar Tarbiya Ina mafita",
       subtitle: "M. Shehu Usman Gumel & M. Yakubu Wambai",
       audioUrl: "${baseUrl}lecture3.mp3",
       fileName: "lecture3.mp3",
-      imagePath: "assets/Image/speakers3.jpg",
+      imagePath: "assets/image/speakers3.jpg",
     ),
   ];
 }
