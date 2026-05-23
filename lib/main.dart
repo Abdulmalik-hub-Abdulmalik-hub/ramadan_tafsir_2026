@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'tafsir_list_screen.dart';
+import 'welcome_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,18 +20,18 @@ class RamadanApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Ramadan Tafsir 2026',
+      title: 'Tafseer 2026 Sheikh Sani Aja',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.dark(
-          primary: const Color(0xFF2E7D32),
+          primary: const Color(0xFF1B5E20),
           secondary: const Color(0xFF81C784),
-          surface: const Color(0xFF121212),
+          surface: const Color(0xFF0D1F0D),
           onSurface: Colors.white,
-          surfaceContainerHighest: const Color(0xFF1E1E1E),
+          surfaceContainerHighest: const Color(0xFF1A2E1A),
         ),
-        scaffoldBackgroundColor: const Color(0xFF0A0A0F),
+        scaffoldBackgroundColor: const Color(0xFF0A1A0A),
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -40,11 +41,11 @@ class RamadanApp extends StatelessWidget {
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             elevation: 4,
-            shadowColor: Colors.green.withOpacity(0.3),
+            shadowColor: const Color(0xFF1B5E20).withOpacity(0.4),
           ),
         ),
       ),
-      home: const HomeScreen(),
+      home: const WelcomeScreen(),
     );
   }
 }
